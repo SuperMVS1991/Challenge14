@@ -1,6 +1,6 @@
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
-
+class Comment extends Model {}
 const Comment = sequelize.define('Comment', {
     id: {
         type: DataTypes.INTEGER,

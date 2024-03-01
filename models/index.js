@@ -1,13 +1,35 @@
 const User = require('./User');
-const Project = require('./Project');
+const Comment = require('./comments'); // Fix the casing of the import statement
+const BlogPost = require('./blogPost');
 
-User.hasMany(Project, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+
+User.hasMany(BlogPost, {
+
+    foreignKey: 'userID',
+    onDelete: 'CASCADE'
 });
 
-Project.belongsTo(User, {
-  foreignKey: 'user_id'
+BlogPost.belongsTo(User, {
+    foreignKey: 'userID'
 });
 
-module.exports = { User, Project };
+User.hasMany(Comment, {
+
+    foreignKey: 'userID',
+    onDelete: 'CASCADE'
+});
+Comment.belongsTo(User, {
+    foreignKey: 'userID'
+});
+BlogPost.hasMany(Comment, {
+    
+        foreignKey: 'postId',
+        onDelete: 'CASCADE'
+    });
+    Comment.belongsTo(BlogPost, {
+        foreignKey: 'postId'
+    });
+
+
+
+module.exports = { User, blogPost };
