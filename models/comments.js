@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../database/connection');
-class Comment extends Model {}
+const sequelize = require('../config/connection.js');
+// class Comment extends Model {}
 const Comment = sequelize.define('Comment', {
     id: {
         type: DataTypes.INTEGER,
@@ -8,19 +8,19 @@ const Comment = sequelize.define('Comment', {
         primaryKey: true,
         autoIncrement: true
     },
-    postId: {
+    postID: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'Posts',
+            model: 'BlogPost',
             key: 'id'
         }
     },
-    userId: {
+    userID: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'Users',
+            model: 'user',
             key: 'id'
         }
     },
@@ -33,8 +33,13 @@ const Comment = sequelize.define('Comment', {
         defaultValue: DataTypes.NOW
     }
 }, {
-    tableName: 'comments',
+    sequelize,
+
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'Comment',
     timestamps: false
+
 });
 
 module.exports = Comment;

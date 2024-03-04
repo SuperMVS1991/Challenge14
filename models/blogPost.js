@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-class BlogPost extends Model {}
+const sequelize = require('../config/connection.js');
+// class BlogPost extends Model {}
 const BlogPost = sequelize.define('BlogPost', {
     id: {
         type: DataTypes.INTEGER,
@@ -20,7 +20,7 @@ const BlogPost = sequelize.define('BlogPost', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'User',
+            model: 'user',
             key: 'id'
         }
     },
@@ -28,6 +28,12 @@ const BlogPost = sequelize.define('BlogPost', {
         type: DataTypes.DATE,
         allowNull: false
     }
+}, // Move the closing curly brace here
+{
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'BlogPost'
 });
 
 module.exports = BlogPost;
