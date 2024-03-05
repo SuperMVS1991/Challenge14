@@ -26,7 +26,7 @@ const BlogPost = sequelize.define('BlogPost', {
     },
     publishedAt: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true,
     }
 }, // Move the closing curly brace here
 {

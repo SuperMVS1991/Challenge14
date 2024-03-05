@@ -1,56 +1,31 @@
 {
-
+  "$schema": "./schema.json",
   "name": "packaege.json",
-
   "version": "1.0.0",
-
   "description": "",
-
-  "main": "index.js",
-
+  "main": "server.js",
   "scripts": {
-
     "test": "echo \"Error: no test specified\" && exit 1",
-
     "seed": "node Seeds/index.js",
-
-    "start": "node server.js"
-
+    "start": "node server.js",
+    "watch": "nodemon server.js"
   },
-
   "author": "",
-
   "license": "ISC",
-
   "dependencies": {
-
     "bcrypt": "^5.1.1",
-
     "connect-session-sequelize": "^7.1.7",
-
     "dotenv": "^16.4.5",
-
     "express": "^4.18.3",
-
     "express-handlebars": "^7.1.2",
-
     "express-session": "^1.18.0",
-
     "faker": "^6.6.6",
-
     "mysql2": "^3.9.2",
-
+    "nodemon": "^3.1.0",
     "package": "^1.0.1",
-
     "sequelize": "^6.37.1"
-
   },
-
   "devDependencies": {
-
     "@faker-js/faker": "^8.4.1"
-
   }
-
 }
-
