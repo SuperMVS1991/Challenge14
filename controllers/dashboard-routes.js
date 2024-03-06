@@ -1,24 +1,29 @@
 const router = require("express").Router();
-const { BlogPost, Comments, Users } = require("../models");
+const { BlogPost, Comment, User } = require("../models");
 const withAuth = require("../utilities/auth.js");
 
 router.get("/", withAuth, (req, res) => {
+
+    console.log(req.session.user_id);
+
+    console.log(req.session);
+
   BlogPost.findAll({
     where: {
-      userID: req.session.userID,
+      userID: req.session.user_id,
     },
-    attributes: ["id", "title", "content", "createdAt"],
+    // attributes: ["id", "title", "content", "publishedAt"],
     include: [
       {
-        model: Comments,
+        model: Comment,
         attributes: ["id", "content", "postID", "userID", "createdAt"],
         include: {
-          model: Users,
+          model: User,
           attributes: ["name"],
         },
       },
       {
-        model: Users,
+        model: User,
         attributes: ["name"],
       },
     ],
