@@ -3,10 +3,9 @@ const { BlogPost, Comment, User } = require("../models");
 const withAuth = require("../utilities/auth.js");
 
 router.get("/", withAuth, (req, res) => {
+  console.log(req.session.user_id);
 
-    console.log(req.session.user_id);
-
-    console.log(req.session);
+  console.log(req.session);
 
   BlogPost.findAll({
     where: {
@@ -45,7 +44,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
     attributes: ["id", "title", "content", "createdAt"],
     include: [
       {
-        model: Comments,
+        model: Comment,
         attributes: ["id", "content", "postID", "userID", "createdAt"],
         include: {
           model: Users,
@@ -53,7 +52,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
         },
       },
       {
-        model: Users,
+        model: User,
         attributes: ["name"],
       },
     ],
