@@ -21,11 +21,15 @@ router.post('/', withAuth, (req, res) => {
         Comment.create({
             content: req.body.content,
             postID: req.body.postID,
-            userID: req.session.userID
+            userID: req.session.user_id
         })
-        .then(dbCommentData => res.json(dbCommentData))
+        .then(dbCommentData => {
+            console.log('Comment created successfully');
+            console.log('Created comment:', dbCommentData);
+            res.json(dbCommentData);
+        })
         .catch(err => {
-            console.log(err);
+            console.error('Error creating comment:', err);
             res.status(400).json(err);
         });
     }

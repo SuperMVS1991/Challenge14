@@ -2,10 +2,10 @@ const { Comment } = require("../models");
 
 const commentData = [
   {
-    userID: 1,
     postID: 1,
-    createdAt: "2021-08-01",
+    userID: 1,
     content: "This is the comment for the first post",
+    createdAt: "2021-08-01",
   },
   {
     userID: 2,

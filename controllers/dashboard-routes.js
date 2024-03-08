@@ -11,11 +11,11 @@ router.get("/", withAuth, (req, res) => {
     where: {
       userID: req.session.user_id,
     },
-    // attributes: ["id", "title", "content", "publishedAt"],
+    attributes: ["id", "title", "content", "publishedAt"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "content", "postID", "userID", "createdAt"],
+        attributes: ["id", "postID", "userID", "content", "createdAt"],
         include: {
           model: User,
           attributes: ["name"],
@@ -31,6 +31,7 @@ router.get("/", withAuth, (req, res) => {
       const blogPosts = dbBlogPostData.map((blogPost) =>
         blogPost.get({ plain: true })
       );
+      console.log(blogPosts);
       res.render("dashboard", { blogPosts, loggedIn: true });
     })
     .catch((err) => {
@@ -47,7 +48,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
         model: Comment,
         attributes: ["id", "content", "postID", "userID", "createdAt"],
         include: {
-          model: Users,
+          model: User,
           attributes: ["name"],
         },
       },

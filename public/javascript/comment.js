@@ -7,7 +7,7 @@ async function commentFormHandler(event) {
       window.location.toString().split('/').length - 1
     ];
   
-    if (comment_text) {
+    if (content) {
         const response = await fetch('/api/comment', {
           method: 'POST',
           body: JSON.stringify({
@@ -20,6 +20,7 @@ async function commentFormHandler(event) {
         });
       
         if (response.ok) {
+          console.log(response);
           document.location.reload();
         } else {
           alert(response.statusText);

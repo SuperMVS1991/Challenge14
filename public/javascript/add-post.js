@@ -9,6 +9,7 @@ async function newFormHandler(event) {
     body: JSON.stringify({
       title,
       content,
+      publishedAt: new Date(),
     }),
     headers: {
       "Content-Type": "application/json",
