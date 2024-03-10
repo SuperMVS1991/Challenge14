@@ -55,11 +55,10 @@ router.get("/blogpost/:id", async (req, res) => {
         },
       ],
     });
-
-    const Post = BlogPostData.get({ plain: true });
-console.log("POST", Post);
+console.log("req.session.logged_in", req.session.logged_in);
+    const blogPost = BlogPostData.get({ plain: true });
     res.render("single-post", {
-      ...Post,
+      blogPost,
       logged_in: req.session.logged_in,
     });
   } catch (err) {

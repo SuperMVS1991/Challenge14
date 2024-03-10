@@ -1,7 +1,7 @@
-{{> post-info Post }}
+{{> post-info blogPost }}
 
-{{#if loggedIn}}
-<form class="comment-form">
+{{#if logged_in}}
+<form class="comment-form container container-fluid mt-5">
   <div>
     <textarea name="comment-body"></textarea>
   </div>
@@ -11,10 +11,11 @@
   </div>
 </form> 
 {{/if}}
+<div class="container container-fluid mt-5"> 
 
-{{> comments Post.Comments}}
+{{> comments blogPost.Comments}}
 
-
-{{#if loggedIn}}
+</div>
+{{#if logged_in}}
 <script src="/javascript/comment.js"></script>
 {{/if}}

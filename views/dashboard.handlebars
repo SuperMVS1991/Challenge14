@@ -22,7 +22,9 @@
     {{#each blogPosts as |blogPost|}}
     <li>
       {{> post-info blogPost}}
+      <div class="container container-fluid mt-5">
       <a href="/dashboard/edit/{{blogPost.id}}" class="edit-link">Edit post</a>
+      </div>
     </li>
     {{/each}}
   </ol>

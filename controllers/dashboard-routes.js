@@ -32,7 +32,7 @@ router.get("/", withAuth, (req, res) => {
         blogPost.get({ plain: true })
       );
       console.log(blogPosts);
-      res.render("dashboard", { blogPosts, loggedIn: true });
+      res.render("dashboard", { blogPosts, logged_in: true });
     })
     .catch((err) => {
       console.log(err);
@@ -61,7 +61,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
     .then((dbBlogPostData) => {
       if (dbBlogPostData) {
         const blogPost = dbBlogPostData.get({ plain: true });
-        res.render("edit-post", { blogPost, loggedIn: true });
+        res.render("edit-post", { blogPost, logged_in: true });
       } else {
         res.status(404).end();
       }
